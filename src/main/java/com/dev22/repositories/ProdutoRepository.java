@@ -3,11 +3,10 @@ package com.dev22.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dev22.domain.Categoria;
 import com.dev22.domain.Produto;
 
 @Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
+public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 	
 	
 }
