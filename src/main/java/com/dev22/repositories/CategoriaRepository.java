@@ -8,6 +8,6 @@ import com.dev22.domain.Produto;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
-	
-	
+		
+		
 }
