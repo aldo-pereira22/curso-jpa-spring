@@ -9,10 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.dev22.domain.Categoria;
 import com.dev22.domain.Cidade;
+import com.dev22.domain.Cliente;
+import com.dev22.domain.Endereco;
 import com.dev22.domain.Estado;
 import com.dev22.domain.Produto;
+import com.dev22.domain.enums.TipoCliente;
 import com.dev22.repositories.CategoriaRepository;
 import com.dev22.repositories.CidadeRepository;
+import com.dev22.repositories.ClienteRepository;
+import com.dev22.repositories.EnderecoRepository;
 import com.dev22.repositories.EstadoRepository;
 import com.dev22.repositories.ProdutoRepository;
 
@@ -30,6 +35,12 @@ public class CursoJpaSpringApplication implements CommandLineRunner{
 	
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepositroy;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursoJpaSpringApplication.class, args);
@@ -67,9 +78,17 @@ public class CursoJpaSpringApplication implements CommandLineRunner{
 		
 		estadoRepository.saveAll(Arrays.asList(estado1, estado2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
-				
 		
+		Cliente cli1 = new Cliente(null, "Maria da Silva", "maria@gmail.com", "9293213234", TipoCliente.PESSOAFISICA.getCod());
+		cli1.getTelefones().addAll(Arrays.asList("62 99329-2939", "62 98192-2934"));
 		
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "jardim", "1923", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida matos", "105", "Sala 800", "Centro", "03212", cli1, c2);
+		
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		
+		clienteRepositroy.saveAll(Arrays.asList(cli1));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 	}
  
 	
