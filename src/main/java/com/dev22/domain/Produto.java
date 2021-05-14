@@ -1,5 +1,6 @@
 package com.dev22.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
-public class Produto {
+public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id

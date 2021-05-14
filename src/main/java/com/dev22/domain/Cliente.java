@@ -37,6 +37,10 @@ public class Cliente implements Serializable{
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
 	
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos =  new ArrayList<>();
+	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,6 +51,18 @@ public class Cliente implements Serializable{
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
+		this.tipo = tipo;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 
@@ -86,6 +102,14 @@ public class Cliente implements Serializable{
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -109,6 +133,8 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	
 	
 }
